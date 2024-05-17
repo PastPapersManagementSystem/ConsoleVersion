@@ -8,7 +8,8 @@ type State struct {
 }
 
 type Session struct {
-	Creator         int
+	SessionId       int
+	CreatorId       int
 	NoOfMembers     int
 	Members         []string
 	GameNo          int

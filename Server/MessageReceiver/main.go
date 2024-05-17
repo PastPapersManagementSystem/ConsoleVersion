@@ -3,6 +3,7 @@ package MessageReceiver
 import (
 	"encoding/json"
 	"log"
+	"main/Server/MessageReceiver/Commands"
 )
 
 const (
@@ -27,11 +28,11 @@ func HandleReceivedMessage(message string) (string, error) {
 
 	switch message {
 	case add:
-		return Add(message)
+		return Commands.Add(message)
 	case create:
-		return Create(message)
+		return Commands.Create(message)
 	case move:
-		return NewMove(message)
+		return Commands.NewMove(message)
 	case unknown:
 		return unknown, nil
 	}
