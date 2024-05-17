@@ -8,14 +8,27 @@ type State struct {
 }
 
 type Session struct {
-	SessionId       int
-	CreatorId       int
-	NoOfMembers     int
-	Members         []string
-	GameNo          int
-	PreviousWinners []string
-	CurrentState    State
-	PreviousStates  []State
+	SessionId          int
+	CreatorId          int
+	NoOfMembers        int
+	CurrentNoOfMembers int
+	Members            []int
+	GameNo             int
+	PreviousWinners    []string
+	CurrentState       State
+	PreviousStates     []State
+}
+
+func (session Session) InitializeNewSession(creatorId int, noOfMembers int) {
+	session.CreatorId = creatorId
+	session.NoOfMembers = noOfMembers
+	session.Members = make([]int, noOfMembers)
+	session.PreviousStates = make([]State, noOfMembers)
+	session.Members = append(session.Members, creatorId)
+}
+
+func (session Session) CurrentMembersCount() int {
+	return len(session.Members)
 }
 
 var Sessions []Session

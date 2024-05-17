@@ -3,7 +3,6 @@ package Commands
 import (
 	"encoding/json"
 	"log"
-	"main/Server/MessageReceiver"
 	"main/Server/MessageReceiver/MessageTypes"
 )
 
@@ -13,7 +12,7 @@ func Add(receivedMessage string) (string, error) {
 	var addNewPlayerToLobby MessageTypes.AddNewPlayer
 	if err := json.Unmarshal([]byte(receivedMessage), &addNewPlayerToLobby); err != nil {
 		log.Fatal("failed to unmarshall add new player message...\nreport: ", err)
-		return MessageReceiver.failure, err
+		return failure, err
 	}
 
 	return response, nil

@@ -13,7 +13,6 @@ const (
 	end     = "END"
 	quit    = "QUIT"
 	unknown = "UNKNOWN"
-	failure = "FAILURE"
 )
 
 func UnMarshallReceivedMessage(message string) (map[string]interface{}, error) {

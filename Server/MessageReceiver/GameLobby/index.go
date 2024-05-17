@@ -17,6 +17,11 @@ func ValidateCreator(createId int) bool {
 	return true
 }
 
+func InitializeNewSession(createNewLobby MessageTypes.CreateLobby) {
+	var newSession Global.Session
+	newSession.InitializeNewSession(createNewLobby.CreatorId, createNewLobby.MaxMembersInLobby)
+}
+
 func Create(createNewLobby MessageTypes.CreateLobby) (string, error) {
 	canCreatorCreateLobby := ValidateCreator(createNewLobby.CreatorId)
 
@@ -24,5 +29,6 @@ func Create(createNewLobby MessageTypes.CreateLobby) (string, error) {
 		return "", errors.New(cantCreateLobby)
 	}
 
+	InitializeNewSession(createNewLobby)
 	return success, nil
 }
