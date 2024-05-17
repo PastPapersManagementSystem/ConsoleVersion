@@ -9,6 +9,8 @@ const (
 	add     = "ADD"
 	create  = "CREATE"
 	move    = "MOVE"
+	end     = "END"
+	quit    = "QUIT"
 	unknown = "UNKNOWN"
 	failure = "FAILURE"
 )
@@ -37,7 +39,7 @@ func HandleReceivedMessage(message string) (string, error) {
 	return response, nil
 }
 
-func MessageReceiverHandler(message string) (string, error) {
+func ReceiverHandler(message string) (string, error) {
 	receivedMessage, unMarshallError := UnMarshallReceivedMessage(message)
 	if unMarshallError != nil {
 		log.Fatal("failed to unmarshall received message\nreport: ", unMarshallError)

@@ -29,7 +29,7 @@ func main() {
 
 		log.Printf("Received message: %s\n", message)
 
-		response, messageReceiverHandlerError := MessageReceiver.MessageReceiverHandler(message)
+		response, messageReceiverHandlerError := MessageReceiver.ReceiverHandler(message)
 
 		if messageReceiverHandlerError != nil {
 			log.Fatal("failed to get receive message\nreport: ", messageReceiverHandlerError)
