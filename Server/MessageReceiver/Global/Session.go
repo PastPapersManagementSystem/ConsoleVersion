@@ -7,15 +7,21 @@ type State struct {
 	Cards          map[string][]int
 }
 
+const (
+	waiting = "WAITING"
+	//completed = "COMPLETED"
+)
+
 type Session struct {
 	SessionId          int
 	CreatorId          int
 	NoOfMembers        int
 	CurrentNoOfMembers int
+	CurrentState       string
 	Members            []int
 	GameNo             int
 	PreviousWinners    []string
-	CurrentState       State
+	CurrentGameState   State
 	PreviousStates     []State
 }
 
@@ -25,6 +31,7 @@ func (session Session) InitializeNewSession(creatorId int, noOfMembers int) {
 	session.Members = make([]int, noOfMembers)
 	session.PreviousStates = make([]State, noOfMembers)
 	session.Members = append(session.Members, creatorId)
+	session.CurrentState = waiting
 }
 
 func (session Session) CurrentMembersCount() int {
