@@ -12,6 +12,7 @@ type State struct {
 const (
 	waiting   = "WAITING"
 	completed = "COMPLETED"
+	started   = "STARTED"
 )
 
 type Session struct {
@@ -63,6 +64,10 @@ func (session Session) IsRequesterTheCreator(requester int) bool {
 
 func (session Session) CurrentMembersCount() int {
 	return len(session.Members)
+}
+
+func (session Session) SwitchCurrentStateToStart() {
+	session.CurrentState = started
 }
 
 var Sessions []Session

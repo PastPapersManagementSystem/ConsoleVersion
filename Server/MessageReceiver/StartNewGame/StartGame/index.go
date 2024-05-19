@@ -35,5 +35,10 @@ func StartGame(initiator MessageTypes.StartGame) (string, error) {
 		return "", errors.New(UnauthorizedRequester)
 	}
 
-	return "", nil
+	if !ValidateMembersCount(currentSession) {
+		return "", errors.New(IncompleteMembersCount)
+	}
+
+	currentSession.SwitchCurrentStateToStart()
+	return Ok, nil
 }
