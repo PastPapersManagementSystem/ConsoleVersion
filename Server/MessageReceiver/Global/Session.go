@@ -15,16 +15,16 @@ const (
 )
 
 type Session struct {
-	LobbyId            int
-	CreatorId          int
-	NoOfMembers        int
-	CurrentNoOfMembers int
-	CurrentState       string
-	Members            []int
-	GameNo             int
-	PreviousWinners    []string
-	CurrentGameState   State
-	PreviousStates     []State
+	LobbyId            int      //randomly generated lobby code
+	CreatorId          int      //the id whose created the game
+	NoOfMembers        int      //no of members required to start the game
+	CurrentNoOfMembers int      //the present number of members
+	CurrentState       string   //tells about the state of the session, either in waiting or completed
+	Members            []int    //the members alongside their id
+	GameNo             int      //what is the game number in a row they are playing
+	PreviousWinners    []string //name of the players who won previously
+	CurrentGameState   State    //what is the current state of the game, has all the cards information and etc
+	PreviousStates     []State  //how the game progressed
 }
 
 func GenerateRandomLobbyId() int {

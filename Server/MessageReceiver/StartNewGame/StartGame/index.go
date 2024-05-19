@@ -16,8 +16,7 @@ func GetSessionForTheLobbyCode(lobbyCode int) *Global.Session {
 	return nil
 }
 
-func IsInitiatorCreator(creatorId int, lobbyCode int) bool {
-	currentSession := GetSessionForTheLobbyCode(lobbyCode)
+func IsInitiatorCreator(creatorId int, currentSession *Global.Session) bool {
 	if currentSession == nil {
 		return false
 	}
@@ -25,8 +24,14 @@ func IsInitiatorCreator(creatorId int, lobbyCode int) bool {
 	return creatorId == currentSession.CreatorId
 }
 
+func ValidateMembersCount(session *Global.Session) bool {
+	return session.CurrentMembersCount() == session.NoOfMembers
+}
+
 func StartGame(initiator MessageTypes.StartGame) (string, error) {
-	if !IsInitiatorCreator(initiator.CreatorId, initiator.LobbyCode) {
+	currentSession := GetSessionForTheLobbyCode(initiator.LobbyCode)
+
+	if !IsInitiatorCreator(initiator.CreatorId, currentSession) {
 		return "", errors.New(UnauthorizedRequester)
 	}
 
