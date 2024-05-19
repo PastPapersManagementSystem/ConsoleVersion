@@ -10,8 +10,7 @@ const (
 	add     = "ADD"
 	create  = "CREATE"
 	move    = "MOVE"
-	end     = "END"
-	quit    = "QUIT"
+	start   = "START"
 	unknown = "UNKNOWN"
 )
 
@@ -32,6 +31,8 @@ func HandleReceivedMessage(message string) (string, error) {
 		return Commands.Create(message)
 	case move:
 		return Commands.NewMove(message)
+	case start:
+		return Commands.InitiateGame(message)
 	case unknown:
 		return unknown, nil
 	}

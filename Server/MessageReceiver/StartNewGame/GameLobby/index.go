@@ -20,6 +20,11 @@ func ValidateCreator(createId int) bool {
 func InitializeNewSession(createNewLobby MessageTypes.CreateLobby) {
 	var newSession Global.Session
 	newSession.InitializeNewSession(createNewLobby.CreatorId, createNewLobby.MaxMembersInLobby)
+	AddNewSessionToGlobal(newSession)
+}
+
+func AddNewSessionToGlobal(newSession Global.Session) {
+	Global.Sessions = append(Global.Sessions, newSession)
 }
 
 func Create(createNewLobby MessageTypes.CreateLobby) (string, error) {
@@ -27,6 +32,10 @@ func Create(createNewLobby MessageTypes.CreateLobby) (string, error) {
 
 	if canCreatorCreateLobby {
 		return "", errors.New(cantCreateLobby)
+	}
+
+	if createNewLobby.MaxMembersInLobby <= 2 {
+		return "", errors.New(invalidMaxNumbers)
 	}
 
 	InitializeNewSession(createNewLobby)
