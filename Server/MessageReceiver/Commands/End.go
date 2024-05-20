@@ -3,7 +3,7 @@ package Commands
 import (
 	"encoding/json"
 	"log"
-	EndGame2 "main/Server/MessageReceiver/EndGame"
+	EndGame2 "main/Server/MessageReceiver/Exit"
 	"main/Server/MessageReceiver/MessageTypes"
 )
 

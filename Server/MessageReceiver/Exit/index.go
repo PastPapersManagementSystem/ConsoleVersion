@@ -1,4 +1,4 @@
-package EndGame
+package Exit
 
 import (
 	"errors"

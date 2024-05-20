@@ -1,4 +1,4 @@
-package EndGame
+package Exit
 
 const (
 	lobbyDoesntExist      = "lobby doesn't exist"

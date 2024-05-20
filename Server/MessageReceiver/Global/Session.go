@@ -67,6 +67,15 @@ func (session Session) AppendNewPlayer(playerId int) {
 	session.Members = append(session.Members, playerId)
 }
 
+func (session Session) DoesPlayerExist(playerId int) bool {
+	for _, members := range session.Members {
+		if members == playerId {
+			return true
+		}
+	}
+	return false
+}
+
 func (session Session) IsRequesterTheCreator(requester int) bool {
 	return requester == session.CreatorId
 }
