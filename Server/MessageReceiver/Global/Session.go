@@ -58,6 +58,15 @@ func (session Session) GetCurrentState() string {
 	return session.CurrentState
 }
 
+func (session Session) AppendNewPlayer(playerId int) {
+	for _, member := range session.Members {
+		if member == playerId {
+			return
+		}
+	}
+	session.Members = append(session.Members, playerId)
+}
+
 func (session Session) IsRequesterTheCreator(requester int) bool {
 	return requester == session.CreatorId
 }

@@ -21,7 +21,7 @@ func IsInitiatorCreator(creatorId int, currentSession *Global.Session) bool {
 		return false
 	}
 
-	return creatorId == currentSession.CreatorId
+	return currentSession.IsRequesterTheCreator(creatorId)
 }
 
 func ValidateMembersCount(session *Global.Session) bool {
