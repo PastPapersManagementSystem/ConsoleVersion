@@ -15,7 +15,7 @@ This component will be responsible for lobby actions.
 2. Start: This is the only point and function that can initiate the game. (completed)
 3. Add: Add to lobby. (completed)
 4. End: End the game. (completed)
-5. Quit: The player will leave the lobby.
+5. Quit: The player will leave the lobby. (completed)
 
 GAME ENGINE:
 
